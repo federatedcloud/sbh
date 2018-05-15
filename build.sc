@@ -4,6 +4,10 @@ import mill.scalalib._
 import mill.util.Loose
 object sbh extends ScalaModule {
   def scalaVersion = "2.12.6"
+  def ivyDeps = Agg(
+    ivy"com.lihaoyi::fansi:0.2.5",
+  )
+
   object TestCommon {
     lazy val ivyDeps = Agg(ivy"com.lihaoyi::utest:0.6.3")
     lazy val testFrameworks = Seq("utest.runner.Framework")

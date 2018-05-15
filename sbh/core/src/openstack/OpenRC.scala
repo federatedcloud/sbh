@@ -1,5 +1,7 @@
 package edu.cornell.cac.sbh.core.openstack
 
+import edu.cornell.cac.sbh.Util.readPassword
+
 import java.util.Properties
 
 import org.jclouds.ContextBuilder
@@ -15,15 +17,30 @@ case class OpenRC(
   OS_USERNAME: String = "bebarker",
   IDENTITY_API_VERSION: Int = 3,
 ){
-    private lazy val OS_PASSWORD = {
-        println(
-          "Please enter your OpenStack Password " +
-          s"for project $OS_PROJECT_NAME as user $OS_USERNAME: "
-        )
-        val standardIn = System.console()
-        val pw = standardIn.readPassword()
-        println("Finished reading password.")
-        pw.toString
+
+  /**
+    * Note: for security reasons, this is a `def` and does not return a String
+    * (heap value) dependent on GC to remove.
+    * @return
+    */
+  private def OS_PASSWORD: Array[Char] = {
+      println(
+        "Please enter your OpenStack Password " +
+        s"for project $OS_PROJECT_NAME as user $OS_USERNAME: "
+      )
+      print("Password> ")
+      readPassword(None)
+//      val standardInMaybe = Option(System.console())
+//      standardInMaybe match {
+//        case Some(standardIn) =>
+//          val pw = standardIn.readPassword()
+//          println("Finished reading password.")
+//          pw
+//        case None =>
+//          println("WARNING: couldn't open console, can't read password")
+//          throw new RuntimeException("Couldn't open console: fail early") // FIXME: DEBUG
+//      }
+
     }
 }
 
@@ -36,7 +53,7 @@ object OpenRC{
       ContextBuilder.newBuilder("openstack-nova")
         .endpoint(openrc.OS_AUTH_URL)
         .credentials(
-          s"${openrc.OS_USER_DOMAIN_NAME}:${openrc.OS_USERNAME}", openrc.OS_PASSWORD
+          s"${openrc.OS_USER_DOMAIN_NAME}:${openrc.OS_USERNAME}", openrc.OS_PASSWORD.toString
         )
         .overrides(overrides)
         .buildApi(classOf[NovaApi])
