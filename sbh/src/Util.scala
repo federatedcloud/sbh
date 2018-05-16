@@ -1,7 +1,5 @@
 package edu.cornell.cac.sbh
 
-import java.io.BufferedReader
-import java.io.InputStreamReader
 import scala.io.StdIn
 
 object Util {
