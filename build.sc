@@ -19,9 +19,9 @@ object sbh extends ScalaModule {
     def moduleDeps = Seq(sbh)
 
     def ivyDeps = Agg(
-      //ivy"com.lihaoyi::upickle:0.5.1",
+      ivy"com.lihaoyi::upickle:0.6.6",
       //ivy"com.lihaoyi::pprint:0.5.2",
-      ivy"com.lihaoyi::ammonite-ops:1.1.0",
+      ivy"com.lihaoyi::ammonite-ops:1.1.1",
       ivy"com.lihaoyi::fansi:0.2.5",
       ivy"org.apache.jclouds:jclouds-all:2.1.0",
       //ivy"org.scala-lang:scala-reflect:${scalaVersion()}"

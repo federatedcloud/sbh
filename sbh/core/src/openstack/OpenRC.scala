@@ -1,6 +1,6 @@
 package edu.cornell.cac.sbh.core.openstack
 
-import edu.cornell.cac.sbh.Util.readPassword
+import edu.cornell.cac.sbh.Util._
 
 import java.util.Properties
 
@@ -29,7 +29,8 @@ case class OpenRC(
         s"for project $OS_PROJECT_NAME as user $OS_USERNAME: "
       )
       print("Password> ")
-      readPassword(None)
+    //FIXME: use readPassword once working in REPL
+      readLine(None)
 //      val standardInMaybe = Option(System.console())
 //      standardInMaybe match {
 //        case Some(standardIn) =>
