@@ -4,6 +4,7 @@ import mill.scalalib._
 import mill.util.Loose
 object sbh extends ScalaModule {
   def scalaVersion = "2.12.6"
+  val jcloudsVersion = "2.1.0"
   def ivyDeps = Agg(
     ivy"com.lihaoyi::fansi:0.2.5",
   )
@@ -23,7 +24,10 @@ object sbh extends ScalaModule {
       //ivy"com.lihaoyi::pprint:0.5.2",
       ivy"com.lihaoyi::ammonite-ops:1.1.1",
       ivy"com.lihaoyi::fansi:0.2.5",
-      ivy"org.apache.jclouds:jclouds-all:2.1.0",
+      ivy"org.apache.jclouds:jclouds-all:$jcloudsVersion",
+      ivy"org.apache.jclouds.driver:jclouds-slf4j:$jcloudsVersion",
+      //ivy"ch.qos.logback:logback-classic:1.0.13"
+      ivy"com.outr::scribe-slf4j:2.4.0",
       //ivy"org.scala-lang:scala-reflect:${scalaVersion()}"
     )
 
