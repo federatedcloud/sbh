@@ -9,13 +9,13 @@ import scala.io.StdIn
 
 object RepeatAll {
   def main(args: Array[String]) {
-
     implicit val system = ActorSystem("my-system")
     implicit val materializer = ActorMaterializer()
     // needed for the future flatMap/onComplete in the end
     implicit val executionContext = system.dispatcher
 
     val route = extractRequest { request =>
+      scribe.info(request.toString)
       complete(HttpEntity(
         ContentTypes.`text/plain(UTF-8)`,
         request.toString()
