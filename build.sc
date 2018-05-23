@@ -37,6 +37,25 @@ object sbh extends ScalaModule {
     }
   }
 
+//
+//  object repeater extends ScalaModule {
+//    def scalaVersion = sbh.scalaVersion
+//
+//    def moduleDeps = Seq(sbh)
+//
+//    // See https://github.com/scalatra/scalatra/blob/v2.6.3/project/Dependencies.scala#L60 ?
+//    val jettyVersion = "9.4.6.v20170531"
+//
+//    def ivyDeps = Agg(
+//      ivy"org.scalatra::scalatra:2.6.3",
+//      ivy"javax.servlet:servlet-api:2.5",
+//      ivy"org.eclipse.jetty:jetty-server:$jettyVersion",
+//      ivy"org.eclipse.jetty:jetty-servlet:$jettyVersion",
+//      ivy"org.eclipse.jetty:jetty-webapp:$jettyVersion",
+//    )
+//  }
+
+
   object repeater extends ScalaModule {
     def scalaVersion = sbh.scalaVersion
 
@@ -46,12 +65,8 @@ object sbh extends ScalaModule {
     val jettyVersion = "9.4.6.v20170531"
 
     def ivyDeps = Agg(
-      ivy"org.scalatra::scalatra:2.6.3",
-      ivy"javax.servlet:servlet-api:2.5",
-      ivy"org.eclipse.jetty:jetty-server:$jettyVersion",
-      ivy"org.eclipse.jetty:jetty-servlet:$jettyVersion",
-      ivy"org.eclipse.jetty:jetty-webapp:$jettyVersion",
+      ivy"com.typesafe.akka::akka-http:10.1.1",
+      ivy"com.typesafe.akka::akka-stream-typed:2.5.12",
     )
   }
-
 }
