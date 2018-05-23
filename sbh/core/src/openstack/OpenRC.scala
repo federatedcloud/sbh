@@ -15,7 +15,8 @@ import scala.collection.JavaConverters._
 //TODO: remove the hardcoding of these elelments and read from PureConfig
 //TODO: https://github.com/pureconfig/pureconfig
 case class OpenRC(
-  OS_AUTH_URL: String = "https://tacc.jetstream-cloud.org:5000/v3",
+  //OS_AUTH_URL: String = "https://tacc.jetstream-cloud.org:5000/v3",
+  OS_AUTH_URL: String = "http://localhost:5001/anything",
   OS_PROJECT_NAME: String = "TG-CIE160046",
   OS_USER_DOMAIN_NAME: String = "tacc",
   OS_USERNAME: String = "bebarker",
