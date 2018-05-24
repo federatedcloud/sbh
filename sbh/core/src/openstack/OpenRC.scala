@@ -15,10 +15,11 @@ import scala.collection.JavaConverters._
 //TODO: remove the hardcoding of these elelments and read from PureConfig
 //TODO: https://github.com/pureconfig/pureconfig
 case class OpenRC(
-  //OS_AUTH_URL: String = "https://tacc.jetstream-cloud.org:5000/v3",
-  OS_AUTH_URL: String = "http://localhost:5001/anything",
+  //OS_AUTH_URL: String = "https://tacc.jetstream-cloud.org:35357/v3",
+  OS_AUTH_URL: String = "http://localhost:5001/v3",
   OS_PROJECT_NAME: String = "TG-CIE160046",
-  OS_USER_DOMAIN_NAME: String = "tacc",
+  OS_PROJECT_DOMAIN_NAME: String = "tacc",
+  //OS_USER_DOMAIN_NAME: String = "tacc",
   OS_USERNAME: String = "bebarker",
   IDENTITY_API_VERSION: Int = 3,
 ){
@@ -68,7 +69,7 @@ object OpenRC{
     ContextBuilder.newBuilder("openstack-nova")
       .endpoint(openrc.OS_AUTH_URL)
       .credentials(
-        s"${openrc.OS_USER_DOMAIN_NAME}:${openrc.OS_USERNAME}", openrc.OS_PASSWORD.toString
+        s"${openrc.OS_PROJECT_DOMAIN_NAME}:${openrc.OS_USERNAME}", openrc.OS_PASSWORD.toString
       )
       .modules(openrcMods.asJava)
       .overrides(overrides)
