@@ -16,6 +16,7 @@ object RepeatAll {
 
     val route = extractRequest { request =>
       scribe.info(request.toString)
+      scribe.info(request.headers)
       complete(HttpEntity(
         ContentTypes.`text/plain(UTF-8)`,
         request.toString()
